@@ -42,9 +42,9 @@ module.exports = function(grunt) {
                         source: jsCode
                     },
                     modifiedAst = espower(jsAst, espowerOptions);
-                grunt.log.writeln('src  ' + f.src);
+                grunt.verbose.writeln('espower src: ' + f.src);
+                grunt.verbose.writeln('espower dest: ' + f.dest);
                 grunt.file.write(f.dest, escodegen.generate(modifiedAst));
-                grunt.log.writeln('dest ' + f.dest);
             });
         });
     });
