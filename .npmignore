@@ -1,4 +1,6 @@
-node_modules
+.git*
+.idea*
+node_modules/
 npm-debug.log
 tmp
 demo/dest/

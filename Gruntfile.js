@@ -21,20 +21,34 @@ module.exports = function(grunt) {
             }
         },
 
-        // Before generating any new files, remove any previously-created files.
         clean: {
-            tests: ['tmp']
+            test: ['tmp'],
+            demo: ['demo/dest/']
         },
 
-        // Configuration to be run (and then tested).
         espower: {
-            instrumentation_tests: {
+            test: {
                 files: [
                     {
                         expand: true,     // Enable dynamic expansion.
+                        flatten: false,
                         cwd: 'test/fixtures/',      // Src matches are relative to this path.
                         src: ['**/*.js'], // Actual pattern(s) to match.
                         dest: 'tmp/',   // Destination path prefix.
+                        ext: '.js'   // Dest filepaths will have this extension.
+                    }
+                ]
+            },
+            demo: {
+                options :{
+                    powerAssertVariableName: 'test'
+                },
+                files: [
+                    {
+                        expand: true,     // Enable dynamic expansion.
+                        cwd: 'demo/src',      // Src matches are relative to this path.
+                        src: ['**/*_test.js'], // Actual pattern(s) to match.
+                        dest: 'demo/dest/',   // Destination path prefix.
                         ext: '.js'   // Dest filepaths will have this extension.
                     }
                 ]
@@ -42,23 +56,19 @@ module.exports = function(grunt) {
         },
 
         nodeunit: {
-            tests: ['test/*_test.js']
+            test: ['test/*_test.js'],
+            demo: ['demo/dest/**/*_test.js']
         }
     });
 
-  // Actually load this plugin's task(s).
-  grunt.loadTasks('tasks');
+    // Actually load this plugin's task(s).
+    grunt.loadTasks('tasks');
 
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
-  // Whenever the "test" task is run, first clean the "tmp" dir, then run this
-  // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'espower', 'nodeunit']);
-
-  // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'test']);
-
+    grunt.registerTask('test', ['clean:test', 'espower:test', 'nodeunit:test']);
+    grunt.registerTask('demo', ['clean:demo', 'espower:demo', 'nodeunit:demo']);
+    grunt.registerTask('default', ['jshint', 'test']);
 };
