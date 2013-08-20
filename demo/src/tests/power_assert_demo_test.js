@@ -6,7 +6,7 @@ exports.demo = {
     setUp: function(done) {
         done();
     },
-    instrumentation_demo: function(test) {
+    demo1: function(test) {
         test = empower(test, {destructive: false});
 
         test.expect(1);
@@ -14,6 +14,16 @@ exports.demo = {
         var three = 3,
             five = 5;
         test.ok(three == five, 'MESSAGE');
+
+        test.done();
+    },
+    demo2: function(test) {
+        test = empower(test, {destructive: false});
+
+        test.expect(1);
+
+        var one = 1, two = 2, three = 3, seven = 7, ten = 10;
+        test.ok((three * (seven * ten)) === three);
 
         test.done();
     }
