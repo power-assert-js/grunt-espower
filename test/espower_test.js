@@ -26,11 +26,21 @@ exports.espower = {
     setUp: function(done) {
         done();
     },
-    instrumentation_tests: function(test) {
-        test.expect(1);
+    instrumentation_test: function(test) {
+        test.expect(2);
 
-        var actual = grunt.file.read('tmp/mocha_node.js');
-        test.ok(actual);
+        var expected = 'tmp/mocha_node.js';
+        test.ok(grunt.file.exists(expected));
+        test.ok(grunt.file.isFile(expected));
+
+        test.done();
+    },
+    subdir_test: function(test) {
+        test.expect(2);
+
+        var expected = 'tmp/subdir/test_in_subdir.js';
+        test.ok(grunt.file.exists(expected));
+        test.ok(grunt.file.isFile(expected));
 
         test.done();
     }
