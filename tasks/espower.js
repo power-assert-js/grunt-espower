@@ -17,10 +17,11 @@ module.exports = function(grunt) {
 
     grunt.registerMultiTask('espower', 'instrument power assert code.', function() {
         // Merge task-specific and/or target-specific options with these defaults.
-        var options = this.options({
-            destructive: false,
-            powerAssertVariableName: 'assert'
-        });
+        var _ = grunt.util._,
+            options = this.options({
+                destructive: false,
+                powerAssertVariableName: 'assert'
+            });
 
         // Iterate over all specified file groups.
         this.files.forEach(function(f) {
@@ -33,16 +34,15 @@ module.exports = function(grunt) {
                     return true;
                 }
             }).forEach(function(filepath) {
+                grunt.verbose.writeln('espower src: ' + f.src);
                 var absPath = fs.realpathSync(filepath),
                     jsCode = fs.readFileSync(filepath, 'utf-8'),
                     jsAst = esprima.parse(jsCode, {tolerant: true, loc: true, range: true}),
-                    espowerOptions = {
-                        powerAssertVariableName: options.powerAssertVariableName,
+                    espowerOptions = _.merge(options, {
                         path: absPath,
                         source: jsCode
-                    },
+                    }),
                     modifiedAst = espower(jsAst, espowerOptions);
-                grunt.verbose.writeln('espower src: ' + f.src);
                 grunt.verbose.writeln('espower dest: ' + f.dest);
                 grunt.file.write(f.dest, escodegen.generate(modifiedAst));
             });
