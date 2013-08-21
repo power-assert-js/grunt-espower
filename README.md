@@ -1,6 +1,17 @@
-# grunt-espower
+grunt-espower : a grunt task to apply espower to target files
+================================
 
-> Run espower
+
+DESCRIPTION
+---------------------------------------
+`grunt-espower` is a grunt task to instrument "Power Assert" feature into your code.
+
+Internally, `grunt-espower` task uses `espower` module that manipulates assertion expression (JavaScript Code) represented as [Mozilla JavaScript AST](https://developer.mozilla.org/en-US/docs/SpiderMonkey/Parser_API), to instrument power-assert feature into the code. The magic is done by using [Esprima](http://esprima.org/) and [Escodegen](https://github.com/Constellation/escodegen).
+
+Please note that `grunt-espower` is an alpha version product. Pull-requests, issue reports and patches are always welcomed.
+
+See [power-assert](http://github.com/twada/power-assert) project for more documentation.
+
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -37,46 +48,59 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.destructive
+Type: `Boolean`
+Default value: `false`
+
+Instrument target AST destructively or not.
+
+#### options.powerAssertVariableName
 Type: `String`
-Default value: `',  '`
+Default value: `'assert'`
 
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
+Target variable name to instrument.
 
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
 
 ```js
 grunt.initConfig({
   espower: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+    test: {
+      files: [
+        {
+          expand: true,        // Enable dynamic expansion.
+          cwd: 'test/',        // Src matches are relative to this path.
+          src: ['**/*.js'],    // Actual pattern(s) to match.
+          dest: 'espowered/',  // Destination path prefix.
+          ext: '.js'           // Dest filepaths will have this extension.
+        }
+      ]
     },
   },
 })
 ```
 
 #### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
 
 ```js
 grunt.initConfig({
   espower: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+    demo: {
+      options :{
+        destructive: true,
+        powerAssertVariableName: 'test'
+      },
+      files: [
+        {
+          expand: true,        // Enable dynamic expansion.
+          cwd: 'demo/',        // Src matches are relative to this path.
+          src: ['**/*.js'],    // Actual pattern(s) to match.
+          dest: 'espowered_demo/',  // Destination path prefix.
+          ext: '.js'           // Dest filepaths will have this extension.
+        }
+      ]
     },
   },
 })

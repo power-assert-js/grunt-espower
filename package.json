@@ -1,7 +1,7 @@
 {
   "name": "grunt-espower",
-  "description": "Apply espower to target files",
-  "version": "0.0.1",
+  "description": "a grunt task to apply espower to target files",
+  "version": "0.1.0",
   "homepage": "https://github.com/twada/grunt-espower",
   "author": {
     "name": "Takuto Wada",
@@ -28,12 +28,12 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "espower": "0.0.1",
+    "espower": "~0.1.0",
     "esprima": "1.0.3",
     "escodegen": "0.0.24"
   },
   "devDependencies": {
-    "empower": "0.0.1",
+    "empower": "~0.1.0",
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-nodeunit": "~0.2.0",
