@@ -2,6 +2,7 @@ grunt-espower
 ================================
 
 [![Build Status](https://travis-ci.org/twada/grunt-espower.png?branch=master)](https://travis-ci.org/twada/grunt-espower)
+[![NPM version](https://badge.fury.io/js/grunt-espower.png)](http://badge.fury.io/js/grunt-espower)
 
 A grunt task to apply espower to target files.
 
