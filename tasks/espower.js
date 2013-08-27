@@ -15,7 +15,7 @@ var espower = require('espower'),
 module.exports = function(grunt) {
     'use strict';
 
-    grunt.registerMultiTask('espower', 'instrument power assert code.', function() {
+    grunt.registerMultiTask('espower', 'instrument power assert feature into code.', function() {
         // Merge task-specific and/or target-specific options with these defaults.
         var _ = grunt.util._,
             options = this.options({
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 
         // Iterate over all specified file groups.
         this.files.forEach(function(f) {
-            var src = f.src.filter(function(filepath) {
+            f.src.filter(function(filepath) {
                 // Warn on and remove invalid source files (if nonull was set).
                 if (!grunt.file.exists(filepath)) {
                     grunt.log.warn('Source file "' + filepath + '" not found.');
