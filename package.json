@@ -17,7 +17,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/twada/grunt-espower/blob/master/LICENSE-MIT"
+      "url": "https://raw.github.com/twada/grunt-espower/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
@@ -28,12 +28,12 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "espower": "~0.1.0",
+    "espower": "~0.1.1",
     "esprima": "1.0.3",
     "escodegen": "0.0.24"
   },
   "devDependencies": {
-    "empower": "~0.1.0",
+    "empower": "~0.1.2",
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-nodeunit": "~0.2.0",
