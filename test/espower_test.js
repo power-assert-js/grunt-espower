@@ -26,7 +26,7 @@ exports.espower = {
     setUp: function(done) {
         done();
     },
-    instrumentation_test: function(test) {
+    instrumentationTest: function(test) {
         test.expect(2);
 
         var expected = 'tmp/mocha_node.js';
@@ -35,7 +35,7 @@ exports.espower = {
 
         test.done();
     },
-    subdir_test: function(test) {
+    subdirTest: function(test) {
         test.expect(2);
 
         var expected = 'tmp/subdir/test_in_subdir.js';
