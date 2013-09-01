@@ -117,7 +117,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 RELEASE HISTORY
 ---------------------------------------
-* (2013/08/21) Release 0.1.0: The first release.
+See [Release History](https://github.com/twada/grunt-espower/releases)
 
 
 AUTHOR
