@@ -17,7 +17,7 @@ module.exports = function(grunt) {
     grunt.registerMultiTask('espower', 'instrument power assert feature into code.', function() {
         // Merge task-specific and/or target-specific options with these defaults.
         var _ = grunt.util._,
-            options = this.options(espower.DEFAULT_OPTIONS);
+            options = this.options(espower.defaultOptions());
 
         // Iterate over all specified file groups.
         this.files.forEach(function(f) {
