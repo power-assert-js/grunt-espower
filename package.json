@@ -29,8 +29,8 @@
   },
   "dependencies": {
     "espower": "~0.1.4",
-    "esprima": "1.0.4",
-    "escodegen": "0.0.26"
+    "esprima": "~1.0.4",
+    "escodegen": "~0.0.27"
   },
   "devDependencies": {
     "empower": "~0.1.4",
