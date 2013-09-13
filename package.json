@@ -28,7 +28,7 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "espower": "~0.1.4",
+    "espower": "~0.1.5",
     "esprima": "~1.0.4",
     "escodegen": "~0.0.27"
   },
