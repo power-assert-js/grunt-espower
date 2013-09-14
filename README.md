@@ -66,6 +66,12 @@ Default value: `'assert'`
 
 Target variable name to instrument.
 
+#### options.lineSeparator
+Type: `String`
+Default value: `'\n'`
+
+Line separator in target sources.
+
 ### Usage Examples
 
 #### Default Options
@@ -96,7 +102,8 @@ grunt.initConfig({
     demo: {
       options :{
         destructive: true,
-        powerAssertVariableName: 'test'
+        powerAssertVariableName: 'test',
+        lineSeparator: '\r\n'
       },
       files: [
         {
