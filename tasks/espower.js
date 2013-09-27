@@ -39,8 +39,8 @@ module.exports = function(grunt) {
                         source: jsCode
                     }),
                     modifiedAst = espower(jsAst, espowerOptions);
-                grunt.verbose.writeln('espower dest: ' + f.dest);
                 grunt.file.write(f.dest, escodegen.generate(modifiedAst));
+                grunt.verbose.writeln('espower dest: ' + f.dest);
             });
         });
     });
