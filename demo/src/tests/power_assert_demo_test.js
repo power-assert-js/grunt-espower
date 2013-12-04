@@ -26,5 +26,15 @@ exports.demo = {
         test.ok((three * (seven * ten)) === three);
 
         test.done();
+    },
+    demo3: function(test) {
+        test = empower(test, {destructive: false});
+
+        test.expect(1);
+
+        var one = 1, two = 2, three = 3, seven = 7, ten = 10;
+        test.equal(three * (seven * ten), three);
+
+        test.done();
     }
 };
