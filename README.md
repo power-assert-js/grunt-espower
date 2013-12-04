@@ -72,6 +72,33 @@ Default value: `'\n'`
 
 Line separator in target sources.
 
+#### options.targetMethods
+Type: `Object`
+Default value: 
+
+```javascript
+targetMethods: {
+    oneArg: [
+        'ok'
+    ],
+    twoArgs: [
+        'equal',
+        'notEqual',
+        'strictEqual',
+        'notStrictEqual',
+        'deepEqual',
+        'notDeepEqual'
+    ]
+}
+```
+
+Target assertion methods to insrtument.
+
+* `oneArg` array for assertion methods with a expression argument (like `assert.ok(actual)`)
+* `twoArgs` array for assertion methods with two expression arguments (like `assert.equal(actual, expected)`)
+
+
+
 ### Usage Examples
 
 #### Default Options
@@ -104,6 +131,22 @@ grunt.initConfig({
         destructive: true,
         powerAssertVariableName: 'test',
         lineSeparator: '\r\n'
+        targetMethods: {
+            oneArg: [
+                'ok',
+                'ng'
+            ],
+            twoArgs: [
+                'equal',
+                'notEqual',
+                'strictEqual',
+                'notStrictEqual',
+                'deepEqual',
+                'notDeepEqual',
+                'projectSpecificEqual',
+                'notProjectSpecificEqual'
+            ]
+        }
       },
       files: [
         {

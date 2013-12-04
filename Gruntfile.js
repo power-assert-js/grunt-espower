@@ -41,7 +41,16 @@ module.exports = function(grunt) {
             },
             demo: {
                 options :{
-                    powerAssertVariableName: 'test'
+                    powerAssertVariableName: 'test',
+                    targetMethods: {
+                        oneArg: [
+                            'ok'
+                        ],
+                        twoArgs: [
+                            'equal',
+                            'notEqual'
+                        ]
+                    }
                 },
                 files: [
                     {
