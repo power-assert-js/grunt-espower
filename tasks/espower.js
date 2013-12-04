@@ -9,6 +9,7 @@
 var espower = require('espower'),
     esprima = require('esprima'),
     escodegen = require('escodegen'),
+    _ = require('lodash'),
     fs = require('fs');
 
 module.exports = function(grunt) {
@@ -16,8 +17,7 @@ module.exports = function(grunt) {
 
     grunt.registerMultiTask('espower', 'instrument power assert feature into code.', function() {
         // Merge task-specific and/or target-specific options with these defaults.
-        var _ = grunt.util._,
-            options = this.options(espower.defaultOptions());
+        var options = this.options(espower.defaultOptions());
 
         // Iterate over all specified file groups.
         this.files.forEach(function(f) {
