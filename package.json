@@ -28,13 +28,13 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "espower": "~0.2.0",
+    "espower": "~0.2.1",
     "esprima": "~1.0.4",
     "escodegen": "~0.0.28",
     "lodash": "~2.4.0"
   },
   "devDependencies": {
-    "empower": "~0.2.0",
+    "empower": "~0.2.1",
     "grunt-contrib-jshint": "~0.7.1",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-nodeunit": "~0.2.2",
