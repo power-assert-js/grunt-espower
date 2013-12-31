@@ -1,7 +1,7 @@
 {
   "name": "grunt-espower",
   "description": "a grunt task to apply espower to target files",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "homepage": "https://github.com/twada/grunt-espower",
   "author": {
     "name": "Takuto Wada",
