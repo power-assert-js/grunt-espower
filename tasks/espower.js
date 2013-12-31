@@ -9,7 +9,7 @@
 var espower = require('espower'),
     esprima = require('esprima'),
     escodegen = require('escodegen'),
-    _ = require('lodash'),
+    merge = require('lodash.merge'),
     fs = require('fs');
 
 module.exports = function(grunt) {
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
                 var absPath = fs.realpathSync(filepath),
                     jsCode = fs.readFileSync(filepath, 'utf-8'),
                     jsAst = esprima.parse(jsCode, {tolerant: true, loc: true, range: true}),
-                    espowerOptions = _.merge(options, {
+                    espowerOptions = merge(options, {
                         path: absPath,
                         source: jsCode
                     }),
