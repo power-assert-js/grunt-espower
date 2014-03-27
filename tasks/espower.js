@@ -33,7 +33,7 @@ module.exports = function(grunt) {
                 grunt.verbose.writeln('espower src: ' + f.src);
                 var absPath = fs.realpathSync(filepath),
                     jsCode = fs.readFileSync(filepath, 'utf-8'),
-                    jsAst = esprima.parse(jsCode, {tolerant: true, loc: true, range: true}),
+                    jsAst = esprima.parse(jsCode, {tolerant: true, loc: true, range: true, tokens: true}),
                     espowerOptions = merge(options, {
                         path: absPath,
                         source: jsCode
