@@ -1,12 +1,12 @@
 grunt-espower
 ================================
 
-[![Build Status](https://travis-ci.org/twada/grunt-espower.png?branch=master)](https://travis-ci.org/twada/grunt-espower)
-[![NPM version](https://badge.fury.io/js/grunt-espower.png)](http://badge.fury.io/js/grunt-espower)
-[![Dependency Status](https://gemnasium.com/twada/grunt-espower.png)](https://gemnasium.com/twada/grunt-espower)
+[![Build Status](https://travis-ci.org/twada/grunt-espower.svg?branch=master)](https://travis-ci.org/twada/grunt-espower)
+[![NPM version](https://badge.fury.io/js/grunt-espower.svg)](http://badge.fury.io/js/grunt-espower)
+[![Dependency Status](https://gemnasium.com/twada/grunt-espower.svg)](https://gemnasium.com/twada/grunt-espower)
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-A grunt task to apply espower to target files.
+A grunt task for power-assert.
 
 
 DESCRIPTION
@@ -54,12 +54,6 @@ grunt.initConfig({
 ```
 
 ### Options
-
-#### options.destructive
-Type: `Boolean`
-Default value: `false`
-
-Instrument target AST destructively or not.
 
 #### options.powerAssertVariableName
 Type: `String`

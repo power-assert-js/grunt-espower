@@ -1,10 +1,3 @@
-/*
- * grunt-espower
- * https://github.com/twada/grunt-espower
- *
- * Copyright (c) 2013-2014 Takuto Wada
- * Licensed under the MIT license.
- */
 module.exports = function(grunt) {
     'use strict';
 
