@@ -1,14 +1,15 @@
 'use strict';
 
 var empower = require('empower'),
-    formatter = require('power-assert-formatter')();
+    formatter = require('power-assert-formatter')(),
+    empowerOptions = {destructive: false, modifyMessageOnFail: false, saveContextOnFail: false};
 
 exports.demo = {
     setUp: function(done) {
         done();
     },
     demo1: function(test) {
-        test = empower(test, formatter, {destructive: false});
+        test = empower(test, formatter, empowerOptions);
 
         test.expect(1);
 
@@ -19,7 +20,7 @@ exports.demo = {
         test.done();
     },
     demo2: function(test) {
-        test = empower(test, formatter, {destructive: false});
+        test = empower(test, formatter, empowerOptions);
 
         test.expect(1);
 
@@ -29,7 +30,7 @@ exports.demo = {
         test.done();
     },
     demo3: function(test) {
-        test = empower(test, formatter, {destructive: false});
+        test = empower(test, formatter, empowerOptions);
 
         test.expect(1);
 
