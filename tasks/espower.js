@@ -1,23 +1,21 @@
-/*
- * grunt-espower
+/**
+ * grunt-espower - A grunt task for power-assert.
+ * 
  * https://github.com/twada/grunt-espower
  *
  * Copyright (c) 2013-2014 Takuto Wada
  * Licensed under the MIT license.
+ *   https://raw.github.com/twada/grunt-espower/master/LICENSE-MIT
  */
-
-var espower = require('espower'),
-    esprima = require('esprima'),
-    escodegen = require('escodegen'),
-    merge = require('lodash.merge'),
-    fs = require('fs');
+var fs = require('fs'),
+    espowerSourceToSource = require('espower-source');
 
 module.exports = function(grunt) {
     'use strict';
 
     grunt.registerMultiTask('espower', 'instrument power assert feature into code.', function() {
         // Merge task-specific and/or target-specific options with these defaults.
-        var options = this.options(espower.defaultOptions());
+        var options = this.options();
 
         // Iterate over all specified file groups.
         this.files.forEach(function(f) {
@@ -26,20 +24,15 @@ module.exports = function(grunt) {
                 if (!grunt.file.exists(filepath)) {
                     grunt.log.warn('Source file "' + filepath + '" not found.');
                     return false;
-                } else {
-                    return true;
                 }
+                return true;
             }).forEach(function(filepath) {
+                var modifiedSource,
+                    absPath = fs.realpathSync(filepath),
+                    jsCode = fs.readFileSync(filepath, 'utf-8');
                 grunt.verbose.writeln('espower src: ' + f.src);
-                var absPath = fs.realpathSync(filepath),
-                    jsCode = fs.readFileSync(filepath, 'utf-8'),
-                    jsAst = esprima.parse(jsCode, {tolerant: true, loc: true, range: true, tokens: true}),
-                    espowerOptions = merge(options, {
-                        path: absPath,
-                        source: jsCode
-                    }),
-                    modifiedAst = espower(jsAst, espowerOptions);
-                grunt.file.write(f.dest, escodegen.generate(modifiedAst));
+                modifiedSource = espowerSourceToSource(jsCode, absPath, options);
+                grunt.file.write(f.dest, modifiedSource);
                 grunt.verbose.writeln('espower dest: ' + f.dest);
             });
         });
