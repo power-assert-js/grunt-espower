@@ -1,7 +1,7 @@
 {
   "name": "grunt-espower",
   "description": "A grunt task for power-assert",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "homepage": "https://github.com/twada/grunt-espower",
   "author": {
     "name": "Takuto Wada",
