@@ -28,10 +28,9 @@ module.exports = function(grunt) {
                 return true;
             }).forEach(function(filepath) {
                 var modifiedSource,
-                    absPath = fs.realpathSync(filepath),
                     jsCode = fs.readFileSync(filepath, 'utf-8');
                 grunt.verbose.writeln('espower src: ' + f.src);
-                modifiedSource = espowerSourceToSource(jsCode, absPath, options);
+                modifiedSource = espowerSourceToSource(jsCode, filepath, options);
                 grunt.file.write(f.dest, modifiedSource);
                 grunt.verbose.writeln('espower dest: ' + f.dest);
             });

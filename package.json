@@ -28,7 +28,7 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "espower-source": "~0.6.0"
+    "espower-source": "~0.7.0"
   },
   "devDependencies": {
     "empower": "~0.6.0",

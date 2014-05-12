@@ -1,6 +1,7 @@
 'use strict';
 
-var grunt = require('grunt');
+var grunt = require('grunt'),
+    fs = require('fs');
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -27,20 +28,22 @@ exports.espower = {
         done();
     },
     instrumentationTest: function(test) {
-        test.expect(2);
+        test.expect(3);
 
-        var expected = 'tmp/mocha_node.js';
-        test.ok(grunt.file.exists(expected));
-        test.ok(grunt.file.isFile(expected));
+        var outputPath = 'tmp/mocha_node.js';
+        test.ok(grunt.file.exists(outputPath));
+        test.ok(grunt.file.isFile(outputPath));
+        test.equal(fs.readFileSync(outputPath, 'utf8'), fs.readFileSync('test/expected/mocha_node.js', 'utf8'));
 
         test.done();
     },
     subdirTest: function(test) {
-        test.expect(2);
+        test.expect(3);
 
-        var expected = 'tmp/subdir/test_in_subdir.js';
-        test.ok(grunt.file.exists(expected));
-        test.ok(grunt.file.isFile(expected));
+        var outputPath = 'tmp/subdir/test_in_subdir.js';
+        test.ok(grunt.file.exists(outputPath));
+        test.ok(grunt.file.isFile(outputPath));
+        test.equal(fs.readFileSync(outputPath, 'utf8'), fs.readFileSync('test/expected/subdir/test_in_subdir.js', 'utf8'));
 
         test.done();
     }
