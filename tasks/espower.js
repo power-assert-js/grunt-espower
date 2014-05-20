@@ -5,7 +5,7 @@
  *
  * Copyright (c) 2013-2014 Takuto Wada
  * Licensed under the MIT license.
- *   https://raw.github.com/twada/grunt-espower/master/LICENSE-MIT
+ *   https://github.com/twada/grunt-espower/blob/master/LICENSE-MIT
  */
 var fs = require('fs'),
     espowerSourceToSource = require('espower-source');

@@ -165,4 +165,4 @@ AUTHOR
 
 LICENSE
 ---------------------------------------
-Licensed under the [MIT](https://raw.github.com/twada/grunt-espower/master/LICENSE-MIT) license.
+Licensed under the [MIT](https://github.com/twada/grunt-espower/blob/master/LICENSE-MIT) license.
