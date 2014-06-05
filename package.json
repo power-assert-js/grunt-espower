@@ -28,14 +28,14 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "espower-source": "~0.7.1"
+    "espower-source": "~0.7.3"
   },
   "devDependencies": {
-    "empower": "~0.7.1",
+    "empower": "~0.7.2",
     "power-assert-formatter": "~0.7.1",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-nodeunit": "~0.3.3",
+    "grunt-contrib-nodeunit": "~0.4.0",
     "grunt": "~0.4.2"
   },
   "peerDependencies": {
