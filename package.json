@@ -1,29 +1,26 @@
 {
   "name": "grunt-espower",
-  "description": "A grunt task for power-assert",
   "version": "0.7.1",
-  "homepage": "https://github.com/twada/grunt-espower",
-  "author": {
-    "name": "Takuto Wada",
-    "email": "takuto.wada@gmail.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "http://github.com/twada/grunt-espower.git"
-  },
-  "bugs": {
-    "url": "https://github.com/twada/grunt-espower/issues"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/twada/grunt-espower/blob/master/LICENSE-MIT"
-    }
+  "description": "A grunt task for power-assert",
+  "keywords": [
+    "power-assert",
+    "test",
+    "assert",
+    "testing",
+    "ecmascript",
+    "ast",
+    "gruntplugin"
   ],
   "main": "Gruntfile.js",
-  "engines": {
-    "node": ">= 0.8.0"
-  },
+  "files": [
+    "Gruntfile.js",
+    "LICENSE-MIT",
+    "README.md",
+    "demo/src",
+    "package.json",
+    "tasks",
+    "test"
+  ],
   "scripts": {
     "test": "grunt test"
   },
@@ -41,13 +38,25 @@
   "peerDependencies": {
     "grunt": "~0.4.1"
   },
-  "keywords": [
-    "power-assert",
-    "test",
-    "assert",
-    "testing",
-    "ecmascript",
-    "ast",
-    "gruntplugin"
-  ]
+  "author": {
+    "name": "Takuto Wada",
+    "email": "takuto.wada@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/twada/grunt-espower.git"
+  },
+  "homepage": "https://github.com/twada/grunt-espower",
+  "bugs": {
+    "url": "https://github.com/twada/grunt-espower/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/twada/grunt-espower/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  }
 }
