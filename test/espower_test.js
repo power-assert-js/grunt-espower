@@ -33,7 +33,8 @@ exports.espower = {
         var outputPath = 'tmp/mocha_node.js';
         test.ok(grunt.file.exists(outputPath));
         test.ok(grunt.file.isFile(outputPath));
-        test.equal(fs.readFileSync(outputPath, 'utf8'), fs.readFileSync('test/expected/mocha_node.js', 'utf8'));
+        test.equal(fs.readFileSync(outputPath, 'utf8'),
+                   fs.readFileSync('test/expected/mocha_node.js', 'utf8'));
 
         test.done();
     },
@@ -43,7 +44,8 @@ exports.espower = {
         var outputPath = 'tmp/subdir/test_in_subdir.js';
         test.ok(grunt.file.exists(outputPath));
         test.ok(grunt.file.isFile(outputPath));
-        test.equal(fs.readFileSync(outputPath, 'utf8'), fs.readFileSync('test/expected/subdir/test_in_subdir.js', 'utf8'));
+        test.equal(fs.readFileSync(outputPath, 'utf8'),
+                   fs.readFileSync('test/expected/subdir/test_in_subdir.js', 'utf8'));
 
         test.done();
     }
