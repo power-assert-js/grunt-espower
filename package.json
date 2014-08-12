@@ -13,10 +13,11 @@
   ],
   "main": "Gruntfile.js",
   "files": [
-    "Gruntfile.js",
+    "CHANGELOG.md",
     "LICENSE-MIT",
     "README.md",
     "demo/src",
+    "Gruntfile.js",
     "package.json",
     "tasks",
     "test"
