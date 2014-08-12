@@ -8,7 +8,7 @@
  *   https://github.com/twada/grunt-espower/blob/master/LICENSE-MIT
  */
 var fs = require('fs'),
-    espowerSourceToSource = require('espower-source');
+    espowerSource = require('espower-source');
 
 module.exports = function(grunt) {
     'use strict';
@@ -30,7 +30,7 @@ module.exports = function(grunt) {
                 var modifiedSource,
                     jsCode = fs.readFileSync(filepath, 'utf-8');
                 grunt.verbose.writeln('espower src: ' + f.src);
-                modifiedSource = espowerSourceToSource(jsCode, filepath, options);
+                modifiedSource = espowerSource(jsCode, filepath, options);
                 grunt.file.write(f.dest, modifiedSource);
                 grunt.verbose.writeln('espower dest: ' + f.dest);
             });
