@@ -1,6 +1,6 @@
 {
   "name": "grunt-espower",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "A grunt task for power-assert",
   "keywords": [
     "power-assert",
