@@ -25,11 +25,11 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "espower-source": "~0.7.3"
+    "espower-source": "~0.8.0"
   },
   "devDependencies": {
-    "empower": "~0.7.2",
-    "power-assert-formatter": "~0.7.1",
+    "empower": "~0.8.0",
+    "power-assert-formatter": "~0.8.0",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-clean": "~0.6.0",
     "grunt-contrib-nodeunit": "~0.4.1",

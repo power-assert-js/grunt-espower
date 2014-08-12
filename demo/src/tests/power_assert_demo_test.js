@@ -2,7 +2,7 @@
 
 var empower = require('empower'),
     formatter = require('power-assert-formatter')(),
-    empowerOptions = {destructive: false, modifyMessageOnFail: false, saveContextOnFail: false};
+    empowerOptions = {destructive: false, modifyMessageOnRethrow: false, saveContextOnRethrow: false};
 
 exports.demo = {
     setUp: function(done) {
