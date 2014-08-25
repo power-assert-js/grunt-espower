@@ -8,7 +8,38 @@
  *   https://github.com/twada/grunt-espower/blob/master/LICENSE-MIT
  */
 var fs = require('fs'),
-    espowerSource = require('espower-source');
+    espower = require('espower'),
+    esprima = require('esprima'),
+    escodegen = require('escodegen'),
+    extend = require('xtend'),
+    convert = require('convert-source-map');
+
+function espowerSource(jsCode, filepath, options) {
+    'use strict';
+
+    var jsAst, espowerOptions, modifiedAst, escodegenOutput, code, map;
+
+    jsAst = esprima.parse(jsCode, {
+        tolerant: true,
+        loc: true,
+        tokens: true,
+        raw: true,
+        source: filepath
+    });
+    espowerOptions = extend(espower.defaultOptions(), options, {
+        destructive: true,
+        path: filepath
+    });
+    modifiedAst = espower(jsAst, espowerOptions);
+    escodegenOutput = escodegen.generate(modifiedAst, {
+        sourceMap: true,
+        sourceMapWithCode: true
+    });
+    code = escodegenOutput.code; // Generated source code
+    map = convert.fromJSON(escodegenOutput.map.toString());
+    map.sourcemap.sourcesContent = [jsCode];
+    return code + '\n' + map.toComment() + '\n';
+}
 
 module.exports = function(grunt) {
     'use strict';
