@@ -29,6 +29,21 @@ module.exports = function(grunt) {
                         ext: '.js'
                     }
                 ]
+            },
+            demo: {
+                options: {
+                    sourceMap: true,
+                    bare: true
+                },
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'demo/src',
+                        src: ['**/*.coffee'],
+                        dest: 'demo/src',
+                        ext: '.js'
+                    }
+                ]
             }
         },
 
@@ -85,6 +100,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
     grunt.registerTask('test', ['jshint', 'clean:test', 'coffee:test', 'espower:test', 'nodeunit:test']);
-    grunt.registerTask('demo', ['clean:demo', 'espower:demo', 'nodeunit:demo']);
+    grunt.registerTask('demo', ['clean:demo', 'coffee:demo', 'espower:demo', 'nodeunit:demo']);
     grunt.registerTask('default', ['jshint', 'test']);
 };
