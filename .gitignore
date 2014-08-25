@@ -2,3 +2,6 @@ node_modules
 npm-debug.log
 tmp
 demo/dest/
+
+test/fixtures/coffee_*.js
+test/fixtures/coffee_*.map

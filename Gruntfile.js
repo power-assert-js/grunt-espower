@@ -14,6 +14,24 @@ module.exports = function(grunt) {
             }
         },
 
+        coffee: {
+            test: {
+                options: {
+                    sourceMap: true,
+                    bare: true
+                },
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'test/',
+                        src: ['**/*.coffee'],
+                        dest: 'test/',
+                        ext: '.js'
+                    }
+                ]
+            }
+        },
+
         clean: {
             test: ['tmp'],
             demo: ['demo/dest/']
@@ -62,10 +80,11 @@ module.exports = function(grunt) {
     grunt.loadTasks('tasks');
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
-    grunt.registerTask('test', ['jshint', 'clean:test', 'espower:test', 'nodeunit:test']);
+    grunt.registerTask('test', ['jshint', 'clean:test', 'coffee:test', 'espower:test', 'nodeunit:test']);
     grunt.registerTask('demo', ['clean:demo', 'espower:demo', 'nodeunit:demo']);
     grunt.registerTask('default', ['jshint', 'test']);
 };

@@ -8,16 +8,30 @@
  *   https://github.com/twada/grunt-espower/blob/master/LICENSE-MIT
  */
 var fs = require('fs'),
+    path = require('path'),
     espower = require('espower'),
     esprima = require('esprima'),
     escodegen = require('escodegen'),
     extend = require('xtend'),
-    convert = require('convert-source-map');
+    convert = require('convert-source-map'),
+    transfer = require('multi-stage-sourcemap').transfer;
+
+function mergeSourceMap(incomingSourceMap, outgoingSourceMap) {
+    'use strict';
+
+    if (typeof outgoingSourceMap === 'string' || outgoingSourceMap instanceof String) {
+        outgoingSourceMap = JSON.parse(outgoingSourceMap);
+    }
+    if (!incomingSourceMap) {
+        return outgoingSourceMap;
+    }
+    return JSON.parse(transfer({fromSourceMap: outgoingSourceMap, toSourceMap: incomingSourceMap}));
+}
 
 function espowerSource(jsCode, filepath, options) {
     'use strict';
 
-    var jsAst, espowerOptions, modifiedAst, escodegenOutput, code, map;
+    var jsAst, espowerOptions, modifiedAst, escodegenOutput;
 
     jsAst = esprima.parse(jsCode, {
         tolerant: true,
@@ -26,19 +40,31 @@ function espowerSource(jsCode, filepath, options) {
         raw: true,
         source: filepath
     });
+    // TODO use options.mapRoot or anything
+    var inMap = convert.fromSource(jsCode) || convert.fromMapFileSource(jsCode, path.dirname(filepath));
+    inMap = (inMap || {}).sourcemap;
     espowerOptions = extend(espower.defaultOptions(), options, {
         destructive: true,
-        path: filepath
+        path: filepath,
+        sourceMap: inMap
     });
     modifiedAst = espower(jsAst, espowerOptions);
     escodegenOutput = escodegen.generate(modifiedAst, {
         sourceMap: true,
         sourceMapWithCode: true
     });
-    code = escodegenOutput.code; // Generated source code
-    map = convert.fromJSON(escodegenOutput.map.toString());
-    map.sourcemap.sourcesContent = [jsCode];
-    return code + '\n' + map.toComment() + '\n';
+    var outMap = convert.fromJSON(escodegenOutput.map.toString());
+    if (inMap) {
+        var mergedRawMap = mergeSourceMap(inMap, outMap.toObject());
+        outMap = convert.fromObject(mergedRawMap);
+        // TODO need sourceRoot resolver for inMap to outMap
+        // outMap.sourcemap.sourceRoot = "..";// inMap.sourceRoot;
+        outMap.sourcemap.sources = inMap.sources;
+        outMap.sourcemap.sourcesContent = inMap.sourcesContent;
+    } else {
+        outMap.sourcemap.sourcesContent = [jsCode];
+    }
+    return escodegenOutput.code + '\n' + outMap.toComment() + '\n';
 }
 
 module.exports = function(grunt) {
