@@ -28,7 +28,7 @@ function mergeSourceMap(incomingSourceMap, outgoingSourceMap) {
     return JSON.parse(transfer({fromSourceMap: outgoingSourceMap, toSourceMap: incomingSourceMap}));
 }
 
-function espowerSource(jsCode, filepath, options) {
+function espowerSource(jsCode, filepath, options, dest) {
     'use strict';
 
     var jsAst, espowerOptions, modifiedAst, escodegenOutput;
@@ -42,6 +42,7 @@ function espowerSource(jsCode, filepath, options) {
     });
     // TODO use options.mapRoot or anything
     var inMap = convert.fromSource(jsCode) || convert.fromMapFileSource(jsCode, path.dirname(filepath));
+    // TODO fix breaking type mismatch inMap and outMap
     inMap = (inMap || {}).sourcemap;
     espowerOptions = extend(espower.defaultOptions(), options, {
         destructive: true,
@@ -55,12 +56,30 @@ function espowerSource(jsCode, filepath, options) {
     });
     var outMap = convert.fromJSON(escodegenOutput.map.toString());
     if (inMap) {
+        var inWorkingDir = path.relative(path.dirname(inMap.file), path.dirname(filepath));
+        var outTo = path.resolve(process.cwd(), dest);
+        var sourceRoot = path.relative(path.dirname(outTo), inWorkingDir);
+        var sourcesContent = inMap.sourcesContent || inMap.sources
+            .map(function (src) {
+                var fullpath = path.resolve(inWorkingDir, inMap.sourceRoot || '', src);
+                // TODO use grunt.file.read
+                return fs.readFileSync(fullpath, {encoding: 'utf8'});
+            });
+        var inSources = inMap.sources
+            .map(function (src) {
+                // to full path
+                return path.resolve(inWorkingDir, inMap.sourceRoot || '', src);
+            })
+            .map(function (src) {
+                var rootPath = path.resolve(path.dirname(outTo), sourceRoot);
+                return path.relative(rootPath, src);
+            });
         var mergedRawMap = mergeSourceMap(inMap, outMap.toObject());
         outMap = convert.fromObject(mergedRawMap);
-        // TODO need sourceRoot resolver for inMap to outMap
-        // outMap.sourcemap.sourceRoot = "..";// inMap.sourceRoot;
-        outMap.sourcemap.sources = inMap.sources;
-        outMap.sourcemap.sourcesContent = inMap.sourcesContent;
+        outMap.sourcemap.file = path.basename(dest);
+        outMap.sourcemap.sourceRoot = sourceRoot;
+        outMap.sourcemap.sources = inSources;
+        outMap.sourcemap.sourcesContent = sourcesContent;
     } else {
         outMap.sourcemap.sourcesContent = [jsCode];
     }
@@ -87,7 +106,7 @@ module.exports = function(grunt) {
                 var modifiedSource,
                     jsCode = fs.readFileSync(filepath, 'utf-8');
                 grunt.verbose.writeln('espower src: ' + f.src);
-                modifiedSource = espowerSource(jsCode, filepath, options);
+                modifiedSource = espowerSource(jsCode, filepath, options, f.dest);
                 grunt.file.write(f.dest, modifiedSource);
                 grunt.verbose.writeln('espower dest: ' + f.dest);
             });
