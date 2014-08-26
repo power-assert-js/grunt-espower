@@ -21,7 +21,7 @@
   "unused": "vars",
   "strict": true,
   "trailing": true,
-  "maxparams": 4,
+  "maxparams": 5,
   "maxdepth": 2,
   "maxstatements": 22,
   "maxcomplexity": 5,

@@ -7,8 +7,7 @@
  * Licensed under the MIT license.
  *   https://github.com/twada/grunt-espower/blob/master/LICENSE-MIT
  */
-var fs = require('fs'),
-    path = require('path'),
+var path = require('path'),
     espower = require('espower'),
     esprima = require('esprima'),
     escodegen = require('escodegen'),
@@ -28,7 +27,7 @@ function mergeSourceMap(incomingSourceMap, outgoingSourceMap) {
     return JSON.parse(transfer({fromSourceMap: outgoingSourceMap, toSourceMap: incomingSourceMap}));
 }
 
-function espowerSource(jsCode, filepath, options, dest) {
+function espowerSource(grunt, jsCode, filepath, dest, options) {
     'use strict';
 
     var jsAst, espowerOptions, modifiedAst, escodegenOutput;
@@ -40,14 +39,11 @@ function espowerSource(jsCode, filepath, options, dest) {
         raw: true,
         source: filepath
     });
-    // TODO use options.mapRoot or anything
     var inMap = convert.fromSource(jsCode) || convert.fromMapFileSource(jsCode, path.dirname(filepath));
-    // TODO fix breaking type mismatch inMap and outMap
-    inMap = (inMap || {}).sourcemap;
     espowerOptions = extend(espower.defaultOptions(), options, {
         destructive: true,
         path: filepath,
-        sourceMap: inMap
+        sourceMap: inMap ? inMap.sourcemap : void 0
     });
     modifiedAst = espower(jsAst, espowerOptions);
     escodegenOutput = escodegen.generate(modifiedAst, {
@@ -56,25 +52,25 @@ function espowerSource(jsCode, filepath, options, dest) {
     });
     var outMap = convert.fromJSON(escodegenOutput.map.toString());
     if (inMap) {
-        var inWorkingDir = path.relative(path.dirname(inMap.file), path.dirname(filepath));
+        // NOTE https://gist.github.com/twada/103d34a3237cecd463a6#comment-1288208
+        var inWorkingDir = path.relative(path.dirname(inMap.sourcemap.file), path.dirname(filepath));
         var outTo = path.resolve(process.cwd(), dest);
         var sourceRoot = path.relative(path.dirname(outTo), inWorkingDir);
-        var sourcesContent = inMap.sourcesContent || inMap.sources
+        var sourcesContent = inMap.sourcemap.sourcesContent || inMap.sourcemap.sources
             .map(function (src) {
-                var fullpath = path.resolve(inWorkingDir, inMap.sourceRoot || '', src);
-                // TODO use grunt.file.read
-                return fs.readFileSync(fullpath, {encoding: 'utf8'});
+                var fullpath = path.resolve(inWorkingDir, inMap.sourcemap.sourceRoot || '', src);
+                return grunt.file.read(fullpath);
             });
-        var inSources = inMap.sources
+        var inSources = inMap.sourcemap.sources
             .map(function (src) {
                 // to full path
-                return path.resolve(inWorkingDir, inMap.sourceRoot || '', src);
+                return path.resolve(inWorkingDir, inMap.sourcemap.sourceRoot || '', src);
             })
             .map(function (src) {
                 var rootPath = path.resolve(path.dirname(outTo), sourceRoot);
                 return path.relative(rootPath, src);
             });
-        var mergedRawMap = mergeSourceMap(inMap, outMap.toObject());
+        var mergedRawMap = mergeSourceMap(inMap.toObject(), outMap.toObject());
         outMap = convert.fromObject(mergedRawMap);
         outMap.sourcemap.file = path.basename(dest);
         outMap.sourcemap.sourceRoot = sourceRoot;
@@ -104,9 +100,9 @@ module.exports = function(grunt) {
                 return true;
             }).forEach(function(filepath) {
                 var modifiedSource,
-                    jsCode = fs.readFileSync(filepath, 'utf-8');
+                    jsCode = grunt.file.read(filepath);
                 grunt.verbose.writeln('espower src: ' + f.src);
-                modifiedSource = espowerSource(jsCode, filepath, options, f.dest);
+                modifiedSource = espowerSource(grunt, jsCode, filepath, f.dest, options);
                 grunt.file.write(f.dest, modifiedSource);
                 grunt.verbose.writeln('espower dest: ' + f.dest);
             });
