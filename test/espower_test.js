@@ -60,6 +60,17 @@ exports.espower = {
 
         test.done();
     },
+    typescriptInstrumentationBase64CommentTest: function(test) {
+        test.expect(3);
+
+        var outputPath = 'tmp/mocha_test_sm_base64comment.js';
+        test.ok(grunt.file.exists(outputPath));
+        test.ok(grunt.file.isFile(outputPath));
+        test.equal(fs.readFileSync(outputPath, 'utf8'),
+            fs.readFileSync('test/expected/mocha_test_sm_base64comment.js', 'utf8'));
+
+        test.done();
+    },
     typescriptMultiSourceTest: function(test) {
         test.expect(3);
 
