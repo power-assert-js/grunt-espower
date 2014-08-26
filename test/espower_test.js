@@ -27,14 +27,36 @@ exports.espower = {
     setUp: function(done) {
         done();
     },
-    instrumentationTest: function(test) {
+    jsInstrumentationTest: function(test) {
         test.expect(3);
 
         var outputPath = 'tmp/mocha_node.js';
         test.ok(grunt.file.exists(outputPath));
         test.ok(grunt.file.isFile(outputPath));
         test.equal(fs.readFileSync(outputPath, 'utf8'),
-                   fs.readFileSync('test/expected/mocha_node.js', 'utf8'));
+            fs.readFileSync('test/expected/mocha_node.js', 'utf8'));
+
+        test.done();
+    },
+    coffeeInstrumentationTest: function(test) {
+        test.expect(3);
+
+        var outputPath = 'tmp/coffee_mocha_node.js';
+        test.ok(grunt.file.exists(outputPath));
+        test.ok(grunt.file.isFile(outputPath));
+        test.equal(fs.readFileSync(outputPath, 'utf8'),
+            fs.readFileSync('test/expected/coffee_mocha_node.js', 'utf8'));
+
+        test.done();
+    },
+    typescriptInstrumentationTest: function(test) {
+        test.expect(3);
+
+        var outputPath = 'tmp/typescript_mocha_node.js';
+        test.ok(grunt.file.exists(outputPath));
+        test.ok(grunt.file.isFile(outputPath));
+        test.equal(fs.readFileSync(outputPath, 'utf8'),
+            fs.readFileSync('test/expected/typescript_mocha_node.js', 'utf8'));
 
         test.done();
     },
