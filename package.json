@@ -40,8 +40,10 @@
     "grunt-contrib-coffee": "^0.11.1",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-nodeunit": "~0.4.1",
+    "grunt-ts": "^1.11.7",
     "power-assert-formatter": "~0.8.0",
-    "source-map-support": "^0.2.7"
+    "source-map-support": "^0.2.7",
+    "typescript": "^1.0.1"
   },
   "peerDependencies": {
     "grunt": "~0.4.2"
