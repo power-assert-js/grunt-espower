@@ -60,6 +60,17 @@ exports.espower = {
 
         test.done();
     },
+    typescriptMultiSourceTest: function(test) {
+        test.expect(3);
+
+        var outputPath = 'tmp/multi-ts/concat.js';
+        test.ok(grunt.file.exists(outputPath));
+        test.ok(grunt.file.isFile(outputPath));
+        test.equal(fs.readFileSync(outputPath, 'utf8'),
+          fs.readFileSync('test/expected/multi-ts/concat.js', 'utf8'));
+
+        test.done();
+    },
     subdirTest: function(test) {
         test.expect(3);
 
