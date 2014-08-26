@@ -51,16 +51,28 @@ module.exports = function(grunt) {
             options: {
                 comments: true,
                 target: 'es5',
-                module: 'commonjs',
                 noImplicitAny: false,
-                sourceMap: true,
-                sourceRoot: '',
-                mapRoot: ''
+                sourceMap: true
             },
             test: {
-                src: ['test/**/*.ts']
+                options: {
+                    module: 'commonjs'
+                },
+                src: [
+                    'test/**/*.ts',
+                    '!test/fixtures/multi-ts/**/*.ts'
+                ]
+            },
+            testConcat: {
+                src: [
+                    'test/fixtures/multi-ts/main.ts'
+                ],
+                out: 'test/fixtures/multi-ts/concat.js'
             },
             demo: {
+                options: {
+                    module: 'commonjs'
+                },
                 src: ['demo/src/**/*.ts']
             }
         },
@@ -118,7 +130,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
-    grunt.registerTask('test', ['jshint', 'clean:test', 'coffee:test', 'ts:test', 'espower:test', 'nodeunit:test']);
+    grunt.registerTask('test', ['jshint', 'clean:test', 'coffee:test', 'ts:test', 'ts:testConcat', 'espower:test', 'nodeunit:test']);
     grunt.registerTask('demo', ['clean:demo', 'coffee:demo', 'ts:demo', 'espower:demo', 'nodeunit:demo']);
     grunt.registerTask('default', ['jshint', 'test']);
 };

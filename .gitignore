@@ -10,6 +10,8 @@ test/fixtures/**/coffee_*.js
 test/fixtures/**/coffee_*.map
 test/fixtures/**/typescript_*.js
 test/fixtures/**/typescript_*.map
+test/fixtures/*-ts/*.js
+test/fixtures/*-ts/*.js.map
 demo/src/**/coffee_*.js
 demo/src/**/coffee_*.map
 demo/src/**/typescript_*.js
