@@ -7,6 +7,8 @@
  * Licensed under the MIT license.
  *   https://github.com/twada/grunt-espower/blob/master/LICENSE-MIT
  */
+'use strict';
+
 var path = require('path'),
     espower = require('espower'),
     esprima = require('esprima'),
@@ -16,8 +18,6 @@ var path = require('path'),
     transfer = require('multi-stage-sourcemap').transfer;
 
 function mergeSourceMap(incomingSourceMap, outgoingSourceMap) {
-    'use strict';
-
     if (typeof outgoingSourceMap === 'string' || outgoingSourceMap instanceof String) {
         outgoingSourceMap = JSON.parse(outgoingSourceMap);
     }
@@ -27,9 +27,35 @@ function mergeSourceMap(incomingSourceMap, outgoingSourceMap) {
     return JSON.parse(transfer({fromSourceMap: outgoingSourceMap, toSourceMap: incomingSourceMap}));
 }
 
-function espowerSource(grunt, jsCode, filepath, dest, options) {
-    'use strict';
+function resolveOutgoingSourcesInfo(grunt, filepath, dest, inMap) {
+    // NOTE https://gist.github.com/twada/103d34a3237cecd463a6#comment-1288208
+    var incomingWorkingDir = path.relative(path.dirname(inMap.sourcemap.file), path.dirname(filepath));
+    var destTo = path.resolve(process.cwd(), dest);
 
+    var sourceRoot = path.relative(path.dirname(destTo), incomingWorkingDir);
+    var sources = inMap.sourcemap.sources
+        .map(function (src) {
+            // to full path
+            return path.resolve(incomingWorkingDir, inMap.sourcemap.sourceRoot || '', src);
+        })
+        .map(function (src) {
+            var rootPath = path.resolve(path.dirname(destTo), sourceRoot);
+            return path.relative(rootPath, src);
+        });
+    var sourcesContent = inMap.sourcemap.sourcesContent || inMap.sourcemap.sources
+        .map(function (src) {
+            var fullpath = path.resolve(incomingWorkingDir, inMap.sourcemap.sourceRoot || '', src);
+            return grunt.file.read(fullpath);
+        });
+
+    return {
+        sourceRoot: sourceRoot,
+        sources: sources,
+        sourcesContent: sourcesContent
+    };
+}
+
+function espowerSource(grunt, jsCode, filepath, dest, options) {
     var jsAst, espowerOptions, modifiedAst, escodegenOutput;
 
     jsAst = esprima.parse(jsCode, {
@@ -52,30 +78,14 @@ function espowerSource(grunt, jsCode, filepath, dest, options) {
     });
     var outMap = convert.fromJSON(escodegenOutput.map.toString());
     if (inMap) {
-        // NOTE https://gist.github.com/twada/103d34a3237cecd463a6#comment-1288208
-        var inWorkingDir = path.relative(path.dirname(inMap.sourcemap.file), path.dirname(filepath));
-        var outTo = path.resolve(process.cwd(), dest);
-        var sourceRoot = path.relative(path.dirname(outTo), inWorkingDir);
-        var sourcesContent = inMap.sourcemap.sourcesContent || inMap.sourcemap.sources
-            .map(function (src) {
-                var fullpath = path.resolve(inWorkingDir, inMap.sourcemap.sourceRoot || '', src);
-                return grunt.file.read(fullpath);
-            });
-        var inSources = inMap.sourcemap.sources
-            .map(function (src) {
-                // to full path
-                return path.resolve(inWorkingDir, inMap.sourcemap.sourceRoot || '', src);
-            })
-            .map(function (src) {
-                var rootPath = path.resolve(path.dirname(outTo), sourceRoot);
-                return path.relative(rootPath, src);
-            });
         var mergedRawMap = mergeSourceMap(inMap.toObject(), outMap.toObject());
+        var resolved = resolveOutgoingSourcesInfo(grunt, filepath, dest, inMap);
+
         outMap = convert.fromObject(mergedRawMap);
         outMap.sourcemap.file = path.basename(dest);
-        outMap.sourcemap.sourceRoot = sourceRoot;
-        outMap.sourcemap.sources = inSources;
-        outMap.sourcemap.sourcesContent = sourcesContent;
+        outMap.sourcemap.sourceRoot = resolved.sourceRoot;
+        outMap.sourcemap.sources = resolved.sources;
+        outMap.sourcemap.sourcesContent = resolved.sourcesContent;
     } else {
         outMap.sourcemap.sourcesContent = [jsCode];
     }
@@ -83,8 +93,6 @@ function espowerSource(grunt, jsCode, filepath, dest, options) {
 }
 
 module.exports = function(grunt) {
-    'use strict';
-
     grunt.registerMultiTask('espower', 'instrument power assert feature into code.', function() {
         // Merge task-specific and/or target-specific options with these defaults.
         var options = this.options();
