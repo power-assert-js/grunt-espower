@@ -56,7 +56,7 @@ function resolveOutgoingSourcesInfo(grunt, filepath, dest, inMap) {
 }
 
 function espowerSource(grunt, jsCode, filepath, dest, options) {
-    var jsAst, espowerOptions, modifiedAst, escodegenOutput;
+    var jsAst, espowerOptions, modifiedAst, escodegenOutput, resolved;
 
     jsAst = esprima.parse(jsCode, {
         tolerant: true,
@@ -79,7 +79,7 @@ function espowerSource(grunt, jsCode, filepath, dest, options) {
     var outMap = convert.fromJSON(escodegenOutput.map.toString());
     if (inMap) {
         var mergedRawMap = mergeSourceMap(inMap.toObject(), outMap.toObject());
-        var resolved = resolveOutgoingSourcesInfo(grunt, filepath, dest, inMap);
+        resolved = resolveOutgoingSourcesInfo(grunt, filepath, dest, inMap);
 
         outMap = convert.fromObject(mergedRawMap);
         outMap.sourcemap.file = path.basename(dest);
@@ -87,7 +87,20 @@ function espowerSource(grunt, jsCode, filepath, dest, options) {
         outMap.sourcemap.sources = resolved.sources;
         outMap.sourcemap.sourcesContent = resolved.sourcesContent;
     } else {
-        outMap.sourcemap.sourcesContent = [jsCode];
+        inMap = {
+            sourcemap: {
+                file: path.basename(dest),
+                sources: [path.basename(filepath)],
+                sourceRoot: '',
+                sourcesContent: [jsCode]
+            }
+        };
+        resolved = resolveOutgoingSourcesInfo(grunt, filepath, dest, inMap);
+
+        outMap.sourcemap.file = path.basename(dest);
+        outMap.sourcemap.sourceRoot = resolved.sourceRoot;
+        outMap.sourcemap.sources = resolved.sources;
+        outMap.sourcemap.sourcesContent = resolved.sourcesContent;
     }
     return escodegenOutput.code + '\n' + outMap.toComment() + '\n';
 }
