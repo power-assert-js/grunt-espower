@@ -148,6 +148,11 @@ AUTHOR
 * [Takuto Wada](http://github.com/twada)
 
 
+CONTRIBUTORS
+---------------------------------------
+* [vvakame](https://github.com/vvakame)
+
+
 LICENSE
 ---------------------------------------
 Licensed under the [MIT](https://github.com/twada/grunt-espower/blob/master/LICENSE-MIT) license.

@@ -52,6 +52,12 @@
     "name": "Takuto Wada",
     "email": "takuto.wada@gmail.com"
   },
+  "contributors": [
+    {
+      "name": "vvakame",
+      "url": "https://github.com/vvakame"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "http://github.com/twada/grunt-espower.git"
