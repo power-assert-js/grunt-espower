@@ -1,30 +1,20 @@
 {
   "name": "grunt-espower",
-  "version": "0.8.0",
   "description": "A grunt task for power-assert",
-  "keywords": [
-    "power-assert",
-    "test",
-    "assert",
-    "testing",
-    "ecmascript",
-    "ast",
-    "gruntplugin"
-  ],
-  "main": "Gruntfile.js",
-  "files": [
-    "CHANGELOG.md",
-    "LICENSE-MIT",
-    "README.md",
-    "demo/src",
-    "Gruntfile.js",
-    "package.json",
-    "tasks",
-    "test"
-  ],
-  "scripts": {
-    "test": "grunt test"
+  "version": "0.8.0",
+  "author": {
+    "name": "Takuto Wada",
+    "email": "takuto.wada@gmail.com"
   },
+  "bugs": {
+    "url": "https://github.com/twada/grunt-espower/issues"
+  },
+  "contributors": [
+    {
+      "name": "vvakame",
+      "url": "https://github.com/vvakame"
+    }
+  ],
   "dependencies": {
     "convert-source-map": "~0.4.1",
     "escodegen": "~1.3.3",
@@ -45,34 +35,42 @@
     "source-map-support": "~0.2.7",
     "typescript": "~1.0.1"
   },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "files": [
+    "CHANGELOG.md",
+    "LICENSE-MIT",
+    "README.md",
+    "demo/src",
+    "Gruntfile.js",
+    "package.json",
+    "tasks",
+    "test"
+  ],
+  "homepage": "https://github.com/twada/grunt-espower",
+  "keywords": [
+    "power-assert",
+    "test",
+    "assert",
+    "testing",
+    "ecmascript",
+    "ast",
+    "gruntplugin"
+  ],
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/twada/grunt-espower/blob/master/LICENSE-MIT"
+  },
+  "main": "Gruntfile.js",
   "peerDependencies": {
     "grunt": "~0.4.2"
   },
-  "author": {
-    "name": "Takuto Wada",
-    "email": "takuto.wada@gmail.com"
-  },
-  "contributors": [
-    {
-      "name": "vvakame",
-      "url": "https://github.com/vvakame"
-    }
-  ],
   "repository": {
     "type": "git",
     "url": "http://github.com/twada/grunt-espower.git"
   },
-  "homepage": "https://github.com/twada/grunt-espower",
-  "bugs": {
-    "url": "https://github.com/twada/grunt-espower/issues"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/twada/grunt-espower/blob/master/LICENSE-MIT"
-    }
-  ],
-  "engines": {
-    "node": ">= 0.8.0"
+  "scripts": {
+    "test": "grunt test"
   }
 }
