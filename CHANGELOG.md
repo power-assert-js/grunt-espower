@@ -1,3 +1,12 @@
+## 0.9.0 (2014-08-28)
+
+
+#### Features
+
+
+* **grunt-espower:** [support multistage sourcemap by @vvakame](https://github.com/twada/grunt-espower/pull/2)
+
+
 ## 0.8.0 (2014-08-12)
 
 
