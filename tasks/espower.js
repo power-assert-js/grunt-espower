@@ -61,7 +61,6 @@ function espowerSource(grunt, jsCode, filepath, dest, options) {
     jsAst = esprima.parse(jsCode, {
         tolerant: true,
         loc: true,
-        tokens: true,
         raw: true,
         source: filepath
     });
