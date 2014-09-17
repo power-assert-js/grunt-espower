@@ -1,3 +1,11 @@
+### 0.9.1 (2014-09-17)
+
+
+#### Features
+
+* **grunt-espower:** update espower to 0.9.1 ([8c6761ae](https://github.com/twada/grunt-espower/commit/8c6761ae88f88070b132b0252185b64f03dd7299))
+
+
 ## 0.9.0 (2014-08-28)
 
 
