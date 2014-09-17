@@ -51,11 +51,10 @@
   "homepage": "https://github.com/twada/grunt-espower",
   "keywords": [
     "power-assert",
-    "test",
     "assert",
+    "assertion",
+    "test",
     "testing",
-    "ecmascript",
-    "ast",
     "gruntplugin"
   ],
   "license": {
