@@ -1,3 +1,10 @@
+## [0.10.0](https://github.com/twada/grunt-espower/releases/tag/v0.10.0) (2014-11-11)
+
+
+* **grunt-espower:**
+  * update escodegen and espower ([5d8bb3c8](https://github.com/twada/grunt-espower/commit/5d8bb3c89ba70dd34a95f5629c81f1737b8cf835))
+
+
 ### 0.9.1 (2014-09-17)
 
 
