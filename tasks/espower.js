@@ -3,7 +3,7 @@
  * 
  * https://github.com/twada/grunt-espower
  *
- * Copyright (c) 2013-2014 Takuto Wada
+ * Copyright (c) 2013-2015 Takuto Wada
  * Licensed under the MIT license.
  *   https://github.com/twada/grunt-espower/blob/master/LICENSE-MIT
  */
