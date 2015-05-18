@@ -1,9 +1,9 @@
 grunt-espower
 ================================
 
-[![Build Status](https://travis-ci.org/twada/grunt-espower.svg?branch=master)](https://travis-ci.org/twada/grunt-espower)
+[![Build Status](https://travis-ci.org/power-assert-js/grunt-espower.svg?branch=master)](https://travis-ci.org/power-assert-js/grunt-espower)
 [![NPM version](https://badge.fury.io/js/grunt-espower.svg)](http://badge.fury.io/js/grunt-espower)
-[![Dependency Status](https://gemnasium.com/twada/grunt-espower.svg)](https://gemnasium.com/twada/grunt-espower)
+[![Dependency Status](https://gemnasium.com/power-assert-js/grunt-espower.svg)](https://gemnasium.com/power-assert-js/grunt-espower)
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 A grunt task for power-assert.
@@ -18,7 +18,7 @@ Internally, `grunt-espower` task uses `espower` module that manipulates assertio
 
 Since 0.9.0, grunt-espower supports sourcemaps by default.
 
-Please note that `grunt-espower` is a beta version product. Pull-requests, issue reports and patches are always welcomed. See [power-assert](http://github.com/twada/power-assert) project for more documentation.
+Please note that `grunt-espower` is a beta version product. Pull-requests, issue reports and patches are always welcomed. See [power-assert](http://github.com/power-assert-js/power-assert) project for more documentation.
 
 
 ## Getting Started
@@ -141,7 +141,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 CHANGELOG
 ---------------------------------------
-See [CHANGELOG](https://github.com/twada/grunt-espower/blob/master/CHANGELOG.md)
+See [CHANGELOG](https://github.com/power-assert-js/grunt-espower/blob/master/CHANGELOG.md)
 
 
 AUTHOR
@@ -156,4 +156,4 @@ CONTRIBUTORS
 
 LICENSE
 ---------------------------------------
-Licensed under the [MIT](https://github.com/twada/grunt-espower/blob/master/LICENSE-MIT) license.
+Licensed under the [MIT](https://github.com/power-assert-js/grunt-espower/blob/master/LICENSE-MIT) license.

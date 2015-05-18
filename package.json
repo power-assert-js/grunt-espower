@@ -4,10 +4,11 @@
   "version": "0.10.0",
   "author": {
     "name": "Takuto Wada",
-    "email": "takuto.wada@gmail.com"
+    "email": "takuto.wada@gmail.com",
+    "url": "http://github.com/twada"
   },
   "bugs": {
-    "url": "https://github.com/twada/grunt-espower/issues"
+    "url": "https://github.com/power-assert-js/grunt-espower/issues"
   },
   "contributors": [
     {
@@ -48,7 +49,7 @@
     "tasks",
     "test"
   ],
-  "homepage": "https://github.com/twada/grunt-espower",
+  "homepage": "https://github.com/power-assert-js/grunt-espower",
   "keywords": [
     "power-assert",
     "assert",
@@ -59,7 +60,7 @@
   ],
   "license": {
     "type": "MIT",
-    "url": "https://github.com/twada/grunt-espower/blob/master/LICENSE-MIT"
+    "url": "https://github.com/power-assert-js/grunt-espower/blob/master/LICENSE-MIT"
   },
   "main": "Gruntfile.js",
   "peerDependencies": {
@@ -67,7 +68,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/twada/grunt-espower.git"
+    "url": "http://github.com/power-assert-js/grunt-espower.git"
   },
   "scripts": {
     "test": "grunt test"

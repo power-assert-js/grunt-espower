@@ -1,11 +1,11 @@
 /**
  * grunt-espower - A grunt task for power-assert.
  * 
- * https://github.com/twada/grunt-espower
+ * https://github.com/power-assert-js/grunt-espower
  *
  * Copyright (c) 2013-2015 Takuto Wada
  * Licensed under the MIT license.
- *   https://github.com/twada/grunt-espower/blob/master/LICENSE-MIT
+ *   https://github.com/power-assert-js/grunt-espower/blob/master/LICENSE-MIT
  */
 'use strict';
 

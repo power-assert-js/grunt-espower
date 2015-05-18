@@ -1,8 +1,8 @@
-## [0.10.0](https://github.com/twada/grunt-espower/releases/tag/v0.10.0) (2014-11-11)
+## [0.10.0](https://github.com/power-assert-js/grunt-espower/releases/tag/v0.10.0) (2014-11-11)
 
 
 * **grunt-espower:**
-  * update escodegen and espower ([5d8bb3c8](https://github.com/twada/grunt-espower/commit/5d8bb3c89ba70dd34a95f5629c81f1737b8cf835))
+  * update escodegen and espower ([5d8bb3c8](https://github.com/power-assert-js/grunt-espower/commit/5d8bb3c89ba70dd34a95f5629c81f1737b8cf835))
 
 
 ### 0.9.1 (2014-09-17)
@@ -10,7 +10,7 @@
 
 #### Features
 
-* **grunt-espower:** update espower to 0.9.1 ([8c6761ae](https://github.com/twada/grunt-espower/commit/8c6761ae88f88070b132b0252185b64f03dd7299))
+* **grunt-espower:** update espower to 0.9.1 ([8c6761ae](https://github.com/power-assert-js/grunt-espower/commit/8c6761ae88f88070b132b0252185b64f03dd7299))
 
 
 ## 0.9.0 (2014-08-28)
@@ -19,7 +19,7 @@
 #### Features
 
 
-* **grunt-espower:** [support multistage sourcemap by @vvakame](https://github.com/twada/grunt-espower/pull/2)
+* **grunt-espower:** [support multistage sourcemap by @vvakame](https://github.com/power-assert-js/grunt-espower/pull/2)
 
 
 ## 0.8.0 (2014-08-12)
@@ -27,7 +27,7 @@
 
 #### Features
 
-* **grunt-espower:** update espower-source to 0.8.0 ([55110fa4](https://github.com/twada/grunt-espower/commit/55110fa4bffab62045d207d0460eaa864cc9fa8e))
+* **grunt-espower:** update espower-source to 0.8.0 ([55110fa4](https://github.com/power-assert-js/grunt-espower/commit/55110fa4bffab62045d207d0460eaa864cc9fa8e))
 
 
 #### Breaking Changes
