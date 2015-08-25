@@ -18,7 +18,7 @@ Internally, `grunt-espower` task uses `espower` module that manipulates assertio
 
 Since 0.9.0, grunt-espower supports sourcemaps by default.
 
-Please note that `grunt-espower` is a beta version product. Pull-requests, issue reports and patches are always welcomed. See [power-assert](http://github.com/power-assert-js/power-assert) project for more documentation.
+Pull-requests, issue reports and patches are always welcomed. See [power-assert](http://github.com/power-assert-js/power-assert) project for more documentation.
 
 
 ## Getting Started
@@ -71,7 +71,9 @@ grunt.initConfig({
     'assert.strictEqual(actual, expected, [message])',
     'assert.notStrictEqual(actual, expected, [message])',
     'assert.deepEqual(actual, expected, [message])',
-    'assert.notDeepEqual(actual, expected, [message])'
+    'assert.notDeepEqual(actual, expected, [message])',
+    'assert.deepStrictEqual(actual, expected, [message])',
+    'assert.notDeepStrictEqual(actual, expected, [message])'
 ]
 ```
 
@@ -118,7 +120,9 @@ grunt.initConfig({
             'assert.strictEqual(actual, expected, [message])',
             'assert.notStrictEqual(actual, expected, [message])',
             'assert.deepEqual(actual, expected, [message])',
-            'assert.notDeepEqual(actual, expected, [message])'
+            'assert.notDeepEqual(actual, expected, [message])',
+            'assert.deepStrictEqual(actual, expected, [message])',
+            'assert.notDeepStrictEqual(actual, expected, [message])'
         ]
       },
       files: [

@@ -52,5 +52,8 @@
   "sub": false,
   "supernew": false,
   "validthis": false,
-  "noyield": false
+  "noyield": false,
+  "globals": {
+    "JSON": true
+  }
 }
