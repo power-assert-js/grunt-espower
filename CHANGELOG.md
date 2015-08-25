@@ -1,3 +1,13 @@
+## [1.0.0](https://github.com/power-assert-js/grunt-espower/releases/tag/v1.0.0) (2015-08-25)
+
+
+#### Features
+
+* **grunt-espower:**
+  * transfer to power-assert-js organization ([23a1e098](https://github.com/power-assert-js/grunt-espower/commit/23a1e0983c944c7443119037a90a2946b1787a02))
+  * update espower to 1.0.6 ([48368e5](https://github.com/power-assert-js/grunt-espower/commit/48368e5c48401835093c5f0d940638c67805421d))
+
+
 ## [0.10.0](https://github.com/power-assert-js/grunt-espower/releases/tag/v0.10.0) (2014-11-11)
 
 
