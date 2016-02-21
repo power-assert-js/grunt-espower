@@ -19,7 +19,7 @@ Internally, `grunt-espower` task uses `espower` module that manipulates assertio
 
 Since 0.9.0, grunt-espower supports sourcemaps by default.
 
-Pull-requests, issue reports and patches are always welcomed. See [power-assert](http://github.com/power-assert-js/power-assert) project for more documentation.
+Pull-requests, issue reports and patches are always welcomed. See [power-assert](https://github.com/power-assert-js/power-assert) project for more documentation.
 
 
 ## Getting Started
@@ -81,7 +81,7 @@ grunt.initConfig({
 Target patterns for power assert feature instrumentation.
 
 If callee name (for example, `assert.equal`) matches exactly and number of arguments is satisfied, then the assertion will be modified.
-Detection is done by [escallmatch](http://github.com/twada/escallmatch). Any arguments enclosed in bracket (for example, `[message]`) means optional parameters. Without bracket means mandatory parameters.
+Detection is done by [escallmatch](https://github.com/twada/escallmatch). Any arguments enclosed in bracket (for example, `[message]`) means optional parameters. Without bracket means mandatory parameters.
 
 
 ### Usage Examples
@@ -151,7 +151,7 @@ See [CHANGELOG](https://github.com/power-assert-js/grunt-espower/blob/master/CHA
 
 AUTHOR
 ---------------------------------------
-* [Takuto Wada](http://github.com/twada)
+* [Takuto Wada](https://github.com/twada)
 
 
 CONTRIBUTORS

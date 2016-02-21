@@ -5,7 +5,7 @@
   "author": {
     "name": "Takuto Wada",
     "email": "takuto.wada@gmail.com",
-    "url": "http://github.com/twada"
+    "url": "https://github.com/twada"
   },
   "bugs": {
     "url": "https://github.com/power-assert-js/grunt-espower/issues"
@@ -65,7 +65,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/power-assert-js/grunt-espower.git"
+    "url": "https://github.com/power-assert-js/grunt-espower.git"
   },
   "scripts": {
     "test": "grunt test"
