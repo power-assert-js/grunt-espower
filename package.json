@@ -44,11 +44,8 @@
     "CHANGELOG.md",
     "LICENSE-MIT",
     "README.md",
-    "demo/src",
-    "Gruntfile.js",
     "package.json",
-    "tasks",
-    "test"
+    "tasks"
   ],
   "homepage": "https://github.com/power-assert-js/grunt-espower",
   "keywords": [
