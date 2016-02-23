@@ -1,3 +1,16 @@
+## [1.1.0](https://github.com/power-assert-js/grunt-espower/releases/tag/v1.1.0) (2016-02-23)
+
+
+#### Features
+
+* [Update peerDependencies to support Grunt 1.0](https://github.com/power-assert-js/grunt-espower/pull/4)
+
+
+#### Bug Fixes
+
+* `main` field in package.json should point to task definition ([ce092dda](https://github.com/power-assert-js/grunt-espower/commit/ce092dda2666265ca39634b0fe308f1a203967a7))
+
+
 ## [1.0.0](https://github.com/power-assert-js/grunt-espower/releases/tag/v1.0.0) (2015-08-25)
 
 
