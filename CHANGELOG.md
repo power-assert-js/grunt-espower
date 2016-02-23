@@ -1,4 +1,4 @@
-## [1.1.0](https://github.com/power-assert-js/grunt-espower/releases/tag/v1.1.0) (2016-02-23)
+## [1.1.0](https://github.com/power-assert-js/grunt-espower/releases/tag/v1.1.0) (2016-02-24)
 
 
 #### Features
