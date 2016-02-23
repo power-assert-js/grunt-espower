@@ -5,9 +5,9 @@ declare var beforeEach:any;
 
 'use strict';
 
-var empower = require('empower'),
-    formatter = require('power-assert-formatter')(),
-    empowerOptions = {destructive: false, modifyMessageOnRethrow: false, saveContextOnRethrow: false};
+var empower = require('empower');
+var formatter = require('power-assert-formatter')();
+var empowerOptions = {destructive: false, modifyMessageOnRethrow: false, saveContextOnRethrow: false};
 
 export var typescript = {
     setUp: function(done) {
@@ -18,8 +18,7 @@ export var typescript = {
 
         test.expect(1);
 
-        var three = 3,
-            five = 5;
+        var three = 3, five = 5;
         test.ok(three == five, 'MESSAGE');
 
         test.done();

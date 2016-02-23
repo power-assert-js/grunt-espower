@@ -9,13 +9,13 @@
  */
 'use strict';
 
-var path = require('path'),
-    espower = require('espower'),
-    esprima = require('esprima'),
-    escodegen = require('escodegen'),
-    extend = require('xtend'),
-    convert = require('convert-source-map'),
-    transfer = require('multi-stage-sourcemap').transfer;
+var path = require('path');
+var espower = require('espower');
+var esprima = require('esprima');
+var escodegen = require('escodegen');
+var extend = require('xtend');
+var convert = require('convert-source-map');
+var transfer = require('multi-stage-sourcemap').transfer;
 
 function mergeSourceMap(incomingSourceMap, outgoingSourceMap) {
     if (typeof outgoingSourceMap === 'string' || outgoingSourceMap instanceof String) {
@@ -119,8 +119,8 @@ module.exports = function(grunt) {
                 }
                 return true;
             }).forEach(function(filepath) {
-                var modifiedSource,
-                    jsCode = grunt.file.read(filepath);
+                var modifiedSource;
+                var jsCode = grunt.file.read(filepath);
                 grunt.verbose.writeln('espower src: ' + f.src);
                 modifiedSource = espowerSource(grunt, jsCode, filepath, f.dest, options);
                 grunt.file.write(f.dest, modifiedSource);
