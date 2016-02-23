@@ -60,7 +60,7 @@
     "gruntplugin"
   ],
   "license": "MIT",
-  "main": "Gruntfile.js",
+  "main": "tasks/espower.js",
   "peerDependencies": {
     "grunt": ">=0.4.2 <2.0.0"
   },
