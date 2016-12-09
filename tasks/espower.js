@@ -10,9 +10,12 @@
 'use strict';
 
 var path = require('path');
+var mergeVisitors = require('merge-estraverse-visitors');
+var empowerAssert = require('empower-assert');
 var espower = require('espower');
 var esprima = require('esprima');
 var escodegen = require('escodegen');
+var estraverse = require('estraverse');
 var extend = require('xtend');
 var convert = require('convert-source-map');
 var transfer = require('multi-stage-sourcemap').transfer;
@@ -70,7 +73,12 @@ function espowerSource(grunt, jsCode, filepath, dest, options) {
         path: filepath,
         sourceMap: inMap ? inMap.sourcemap : void 0
     });
-    modifiedAst = espower(jsAst, espowerOptions);
+    modifiedAst = estraverse.replace(jsAst, mergeVisitors([
+        {
+            enter: empowerAssert.enter
+        },
+        espower.createVisitor(jsAst, espowerOptions)
+    ]));
     escodegenOutput = escodegen.generate(modifiedAst, {
         sourceMap: true,
         sourceMapWithCode: true
