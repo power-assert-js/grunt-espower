@@ -3,7 +3,7 @@ declare var describe:any;
 declare var it:any;
 declare var beforeEach:any;
 
-var assert = require('power-assert');
+var assert = require('assert');
 
 describe('Array', () => {
     var ary: number[];
