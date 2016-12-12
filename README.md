@@ -144,6 +144,16 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 
+OUR SUPPORT POLICY
+---------------------------------------
+
+We support Node under maintenance. In other words, we stop supporting old Node version when [their maintenance ends](https://github.com/nodejs/LTS).
+
+This means that any other environment is not supported.
+
+NOTE: If grunt-espower works in any of the unsupported environments, it is purely coincidental and has no bearing on future compatibility. Use at your own risk.
+
+
 CHANGELOG
 ---------------------------------------
 See [CHANGELOG](https://github.com/power-assert-js/grunt-espower/blob/master/CHANGELOG.md)
