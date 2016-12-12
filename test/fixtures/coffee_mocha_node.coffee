@@ -1,4 +1,4 @@
-assert = require 'power-assert'
+assert = require 'assert'
 
 describe 'Array', () ->
   beforeEach () ->
